@@ -1,0 +1,14 @@
+S=AB
+A=aA
+A=c
+B=b
+
+
+E=TF
+F=+TF 
+F=#
+T=GU
+U=*GU
+U=#
+G=i
+G=(E)

@@ -1,0 +1,19 @@
+Simple Subject-Verb Sentence:
+The cat sleeps
+Grammar: ARTICLE NOUN VERB
+
+Subject-Verb-Object Sentence:
+The man reads a book
+Grammar: ARTICLE NOUN VERB ARTICLE NOUN
+
+Subject-Verb with Adjective:
+The big dog runs
+Grammar: ARTICLE ADJECTIVE NOUN VERB
+
+Subject-Verb-Prepositional Phrase:
+The cat sleeps on a table
+Grammar: ARTICLE NOUN VERB PREPOSITION ARTICLE NOUN
+
+Compound Sentence with Conjunction:
+The cat sleeps and the dog runs
+Grammar: ARTICLE NOUN VERB CONJUNCTION ARTICLE NOUN VERB

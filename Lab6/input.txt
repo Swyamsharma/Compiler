@@ -1,0 +1,7 @@
+SELECT name FROM users
+SELECT id, name FROM employees WHERE age = 30
+SELECT name FROM students ORDER BY grade
+INSERT INTO users (name) VALUES ("Alice")
+INSERT INTO employees (id, name, age) VALUES (1, "Bob", 40)
+UPDATE users SET age = 35
+UPDATE employees SET salary = 50000 WHERE id < 10
