@@ -1,0 +1,8 @@
+SELECT id, name FROM employees WHERE count = 5*2 + 1
+SELECT sal from emp WHERE sal >= ' sal*(+sal 0.2) '
+SELECT id FROM emp WHERE login = ' x+3x'-- '
+SELECT * FROM emp WHERE sal >= ' (sal + 100) * 0.5 ' AND age >= ' age+ 1 '
+SELECT * from orders where total = (price - discount) / items
+select * from test where val = 100
+SELECT fail from test where x = 1 2 + 3 -- invalid syntax
+select * from test where a = b; -- meta char

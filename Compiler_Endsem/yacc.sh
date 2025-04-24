@@ -41,6 +41,7 @@ if [ -n "$yaccfilename" ]; then
     if [ ! -f "$yaccfilename" ]; then
         echo "Error: Yacc file '$yaccfilename' does not exist."
         exit 1
+    fi
     echo "Compiling Yacc file: $yaccfilename"
     yacc -d "$yaccfilename"
     if [ $? -ne 0 ]; then
@@ -55,9 +56,9 @@ outputname="${lexfilename%.*}"
 # Compile the generated C files into an executable
 echo "Linking and compiling to create executable: $outputname"
 if [ -n "$yaccfilename" ]; then
-    gcc lex.yy.c y.tab.c -o "$outputname"
+    gcc lex.yy.c y.tab.c -o "$outputname" -lm
 else
-    gcc lex.yy.c -o "$outputname"
+    gcc lex.yy.c -o "$outputname" -lm # Also add -lm here for consistency, though not strictly needed for the current error
 fi
 if [ $? -ne 0 ]; then
     echo "Error: GCC compilation failed."
@@ -69,6 +70,7 @@ if [ -n "$inputfile" ]; then
     if [ ! -f "$inputfile" ]; then
         echo "Error: Input file '$inputfile' does not exist."
         exit 1
+    fi
     echo "Running $outputname with input from $inputfile"
     echo "----------------------------------------"
     ./"$outputname" < "$inputfile"

@@ -1,0 +1,146 @@
+State 10 conflicts: 2 shift/reduce
+State 11 conflicts: 2 shift/reduce
+
+
+Grammar
+
+    0 $accept: line $end
+
+    1 line: expr T_EOL
+    2     | error T_EOL
+
+    3 expr: T_ID
+    4     | expr '+' expr
+    5     | expr '*' expr
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    '*' (42) 5
+    '+' (43) 4
+    error (256) 2
+    T_ID <ival> (258) 3
+    T_EOL (259) 1 2
+
+
+Nonterminals, with rules where they appear
+
+    $accept (7)
+        on left: 0
+    line (8)
+        on left: 1 2
+        on right: 0
+    expr <ival> (9)
+        on left: 3 4 5
+        on right: 1 4 5
+
+
+State 0
+
+    0 $accept: • line $end
+
+    error  shift, and go to state 1
+    T_ID   shift, and go to state 2
+
+    line  go to state 3
+    expr  go to state 4
+
+
+State 1
+
+    2 line: error • T_EOL
+
+    T_EOL  shift, and go to state 5
+
+
+State 2
+
+    3 expr: T_ID •
+
+    $default  reduce using rule 3 (expr)
+
+
+State 3
+
+    0 $accept: line • $end
+
+    $end  shift, and go to state 6
+
+
+State 4
+
+    1 line: expr • T_EOL
+    4 expr: expr • '+' expr
+    5     | expr • '*' expr
+
+    T_EOL  shift, and go to state 7
+    '+'    shift, and go to state 8
+    '*'    shift, and go to state 9
+
+
+State 5
+
+    2 line: error T_EOL •
+
+    $default  reduce using rule 2 (line)
+
+
+State 6
+
+    0 $accept: line $end •
+
+    $default  accept
+
+
+State 7
+
+    1 line: expr T_EOL •
+
+    $default  reduce using rule 1 (line)
+
+
+State 8
+
+    4 expr: expr '+' • expr
+
+    T_ID  shift, and go to state 2
+
+    expr  go to state 10
+
+
+State 9
+
+    5 expr: expr '*' • expr
+
+    T_ID  shift, and go to state 2
+
+    expr  go to state 11
+
+
+State 10
+
+    4 expr: expr • '+' expr
+    4     | expr '+' expr •
+    5     | expr • '*' expr
+
+    '+'  shift, and go to state 8
+    '*'  shift, and go to state 9
+
+    '+'       [reduce using rule 4 (expr)]
+    '*'       [reduce using rule 4 (expr)]
+    $default  reduce using rule 4 (expr)
+
+
+State 11
+
+    4 expr: expr • '+' expr
+    5     | expr • '*' expr
+    5     | expr '*' expr •
+
+    '+'  shift, and go to state 8
+    '*'  shift, and go to state 9
+
+    '+'       [reduce using rule 5 (expr)]
+    '*'       [reduce using rule 5 (expr)]
+    $default  reduce using rule 5 (expr)
